@@ -3,6 +3,7 @@ using FeliveryAPI.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -142,7 +143,19 @@ namespace FeliveryAPI.Repository
             };
         }
 
-        private async Task<JwtSecurityToken> CreateJwtToken(IdentityUser user)
+        public async Task<IEnumerable<Restaurant>> Search(string name)
+        {
+            using var customContext = Context.CreateDbContext();
+
+            IQueryable<Restaurant> query = customContext.Restaurants;
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                query = query.Where(e => e.Name.Contains(name));
+            }
+            return await query.ToListAsync();
+        }
+            private async Task<JwtSecurityToken> CreateJwtToken(IdentityUser user)
         {
             var userClaims = await _userManager.GetClaimsAsync(user);
             var roles = await _userManager.GetRolesAsync(user);

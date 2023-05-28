@@ -106,5 +106,26 @@ namespace FeliveryAPI.Controllers
             //return Ok();
             //return Ok(new { token = result.Token, expiration = result.ExpiresOn});
         }
+
+        [HttpGet("Name")]
+        public async Task<ActionResult<IEnumerable<Restaurant>>> Search(string name)
+        {
+            try
+            {
+                var result = await StoreRepo.Search(name);
+
+                if (result.Any())
+                {
+                    return Ok(result);
+                }
+
+                return NotFound();
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error retrieving data from the database");
+            }
+        }
     }
 }

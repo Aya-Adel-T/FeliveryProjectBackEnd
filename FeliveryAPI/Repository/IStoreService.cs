@@ -2,8 +2,9 @@
 
 namespace FeliveryAPI.Repository
 {
-    public interface IStoreService : IRepository<Restaurant> , IUserService
+    public interface IStoreService : IRepository<Restaurant>, IUserService
     {
         Task<AuthModel> Register(RegData Data);
-    }
+        Task<IEnumerable<Restaurant>> Search(string Name);
+}
 }
