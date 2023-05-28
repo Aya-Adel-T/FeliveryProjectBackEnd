@@ -15,7 +15,6 @@ namespace FeliveryAPI.Models
         public Restaurant()
         {
             MenuItems = new List<MenuItem>();
-            Offers = new List<Offer>();
             Orders = new List<Order>();
         }
 
@@ -40,7 +39,6 @@ namespace FeliveryAPI.Models
         public virtual IdentityUser? IdentityUser { get; set; }
         public virtual ICollection<MenuItem?> MenuItems { get; set; }
         public virtual ICollection<Order?> Orders { get; set; }
-        public virtual ICollection<Offer?> Offers { get; set; }
 
 
         /// <summary>

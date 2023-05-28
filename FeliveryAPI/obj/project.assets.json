@@ -11415,19 +11415,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Mohamed Khaled\\.nuget\\packages\\": {}
+    "C:\\Users\\Shaza Usama\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mohamed Khaled\\Desktop\\GP\\Project\\BackEnd\\FeliveryAPI\\FeliveryAPI.csproj",
+      "projectUniqueName": "C:\\Users\\Shaza Usama\\Source\\Repos\\FeliveryProjectBackEndLast\\FeliveryAPI\\FeliveryAPI.csproj",
       "projectName": "FeliveryAPI",
-      "projectPath": "C:\\Users\\Mohamed Khaled\\Desktop\\GP\\Project\\BackEnd\\FeliveryAPI\\FeliveryAPI.csproj",
-      "packagesPath": "C:\\Users\\Mohamed Khaled\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mohamed Khaled\\Desktop\\GP\\Project\\BackEnd\\FeliveryAPI\\obj\\",
+      "projectPath": "C:\\Users\\Shaza Usama\\Source\\Repos\\FeliveryProjectBackEndLast\\FeliveryAPI\\FeliveryAPI.csproj",
+      "packagesPath": "C:\\Users\\Shaza Usama\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Shaza Usama\\Source\\Repos\\FeliveryProjectBackEndLast\\FeliveryAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Mohamed Khaled\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Shaza Usama\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
