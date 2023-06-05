@@ -14,6 +14,7 @@ namespace FeliveryAPI.Repository
             Context = context;
             _environment = environment;
         }
+
         public List<MenuItem> GetAll()
         {
             List<MenuItem> MenuItemList = new();
@@ -63,7 +64,7 @@ namespace FeliveryAPI.Repository
             string MItImg;
             using (var customContext = Context.CreateDbContext())
             {
-                var DiffRouteData = customContext.MenuItems.Find(menuitem.Id);
+                MenuItem DiffRouteData = customContext.MenuItems.Find(menuitem.Id);
                 MItImg = DiffRouteData.MenuItemImg;
             }
             using (var customContext = Context.CreateDbContext())
@@ -73,9 +74,10 @@ namespace FeliveryAPI.Repository
                 customContext.SaveChanges();
             }
         }
-        public void Delete(int id)
+
+        public MenuItem Delete(int id)
         {
-            var Item = new MenuItem();
+            MenuItem Item = new();
             var store = new Restaurant();
             string MenuItemImg;
             using (var customContext = Context.CreateDbContext())
@@ -95,15 +97,21 @@ namespace FeliveryAPI.Repository
                     File.Delete(MenuItemImg);
                 customContext.SaveChanges();
             }
+            return Item;
         }
-        public string UploadImage(IFormFile? Img, string Storename, string MenuItemName)
+
+        public string UploadImage(IFormFile? Img, int StoreId, string MenuItemName)
         {
             if (MenuItemName == null)
                 throw new Exception("Menu Item Name Not Found");
             string ImageUrl = string.Empty;
             string HostUrl = "https://localhost:44309/";
             string RawName = MenuItemName.Replace(" ", "-");
-            string RawStoreName = Storename.Replace(" ", "-");
+            string RawStoreName = string.Empty;
+            using (var customContext = Context.CreateDbContext())
+            {
+                RawStoreName = customContext.Restaurants.Where(r => r.Id == StoreId).Select(r => r.Name).First().Replace(" ", "-");
+            }
             string filePath = _environment.WebRootPath + "\\Uploads\\Product\\" + RawStoreName + "\\Menu\\";
             string imagepath = filePath + $"{RawName}.png";
             if (!Directory.Exists(filePath))
